@@ -26,3 +26,8 @@ vim.opt.colorcolumn = "80"
 
 -- Force latex
 vim.g.tex_flavor = "latex"
+
+-- Folding
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+vim.opt.foldlevelstart = 99
