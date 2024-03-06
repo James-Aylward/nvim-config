@@ -205,6 +205,25 @@ return {
             }
         )
     ),
+    -- Environment
+    s(
+        {
+            trig="env",
+            descr="Create an environment",
+        },
+        fmta(
+            [[
+                \begin{<>}
+                    <>
+                \end{<>}
+            ]],
+            {
+                i(1),
+                i(0),
+                r(1)
+            }
+        )
+    ),
     -- Boilerplate Math
     s(
         {
@@ -214,6 +233,7 @@ return {
         fmta(
             [[
                 \documentclass[12pt,english]{article}
+                \usepackage{tcolorbox}
                 \usepackage{microtype}
                 \usepackage{amsmath}
                 \usepackage{amssymb}
