@@ -25,7 +25,24 @@ return {
                 lualine_a = {'mode'},
                 lualine_b = {'branch', 'diff', 'diagnostics'},
                 lualine_c = {'filename'},
-                lualine_x = {'tabs', 'searchcount', 'filetype'},
+                lualine_x = {
+                    function ()
+                        if vim.bo.filetype ~= "arduino" then
+                            return ""
+                        end
+                        local port = vim.fn["arduino#GetPort"]()
+                        local line = string.format("[%s]", vim.g.arduino_board)
+                        if vim.g.arduino_programmer ~= "" then
+                            line = line .. string.format(" [%s]", vim.g.arduino_programmer)
+                        end
+                        if port ~= 0 then
+                            line = line .. string.format(" (%s:%s)", port, vim.g.arduino_serial_baud)
+                        end
+                        return line
+                    end,
+                    'searchcount',
+                    'filetype'
+                },
                 lualine_y = {'progress'},
                 lualine_z = {'location'}
             },
